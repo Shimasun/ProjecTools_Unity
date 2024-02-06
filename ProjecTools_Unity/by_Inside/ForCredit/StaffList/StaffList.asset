@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29b5c75225a3684a8fee35444ea4ce8, type: 3}
+  m_Name: StaffList
+  m_EditorClassIdentifier: 
+  list:
+  - Position: Scenario
+    Names: Runa Takahashi
+    SPLineBreak: 1
+  - Position: Character Design
+    Names: Ayumu Miura,Sara Tsuchida,Shunsuke Kimura
+    SPLineBreak: 1
+  - Position: Lead Game Designer
+    Names: Ryohei Shimamura
+    SPLineBreak: 1
+  - Position: Lead Programmer
+    Names: Shuntaro Shimoyama
+    SPLineBreak: 1
+  - Position: Lead Artist
+    Names: Shunsuke Kimura
+    SPLineBreak: 1
+  - Position: Main Game Mechanics
+    Names: Runa Takahashi,Ryohei Shimamura
+    SPLineBreak: 0
+  - Position: '"Key" Detail'
+    Names: Runa Takahashi
+    SPLineBreak: 0
+  - Position: '"Key" Combination'
+    Names: Runa Takahashi
+    SPLineBreak: 0
+  - Position: Score Design
+    Names: ???? ????
+    SPLineBreak: 1
+  - Position: Base Program
+    Names: Shuntaro Shimoyama
+    SPLineBreak: 0
+  - Position: Notepad Program
+    Names: Itsuki Takahashi,Shuntaro Shimoyama
+    SPLineBreak: 0
+  - Position: '"Key" Program'
+    Names: Itsuki Takahashi
+    SPLineBreak: 0
+  - Position: Message Program
+    Names: Itsuki Takahashi,Ryohei Shimamura
+    SPLineBreak: 0
+  - Position: Article Program
+    Names: Shuntaro Shimoyama
+    SPLineBreak: 0
+  - Position: Stage AlertLevel Program
+    Names: Hinata Watanabe
+    SPLineBreak: 0
+  - Position: GameOver Program
+    Names: Hinata Watanabe
+    SPLineBreak: 0
+  - Position: Question Program
+    Names: Itsuki Takahashi
+    SPLineBreak: 0
+  - Position: Target DataBase System
+    Names: Shuntaro Shimoyama
+    SPLineBreak: 0
+  - Position: Stage Camera Program
+    Names: Shuntaro Shimoyama
+    SPLineBreak: 0
+  - Position: Stage State Program
+    Names: Kento Takada,Shuntaro Shimoyama
+    SPLineBreak: 0
+  - Position: Target Facial Program
+    Names: Hinata Watanabe
+    SPLineBreak: 0
+  - Position: MainMenu Program
+    Names: ???? ????,Ryohei Shimamura
+    SPLineBreak: 0
+  - Position: Achievement Program
+    Names: Ryohei Shimamura,???? ????
+    SPLineBreak: 0
+  - Position: Settings Program
+    Names: ???? ????
+    SPLineBreak: 0
+  - Position: Audio Manager Program
+    Names: Ryohei Shimamura
+    SPLineBreak: 0
+  - Position: SceneChanger Program
+    Names: Ryohei Shimamura
+    SPLineBreak: 0
+  - Position: SaveData Manager Program
+    Names: Ryohei Shimamura,???? ????
+    SPLineBreak: 0
+  - Position: Debug Indication Program
+    Names: Ryohei Shimamura
+    SPLineBreak: 0
+  - Position: License Indication Program
+    Names: Ryohei Shimamura,,Kento Takada
+    SPLineBreak: 1
+  - Position: UI Design
+    Names: Shunsuke Kimura,,Ryohei Shimamura
+    SPLineBreak: 0
+  - Position: Character Model
+    Names: Ayumu Miura,Sara Tsuchida,Shunsuke Kimura
+    SPLineBreak: 0
+  - Position: Stage 3D Model
+    Names: Ayumu Miura
+    SPLineBreak: 1
+  - Position: Audio Selection
+    Names: Masaru Uematsu
+    SPLineBreak: 0
+  - Position: Some SE Compose
+    Names: Ryohei Shimamura
+    SPLineBreak: 1
+  - Position: Thanks (Font)
+    Names: "\u3010\u3057\u306D\u304D\u3083\u3077\u3057\u3087\u3093\u3011,Copyright
+      (C) 2000 \u96D1\u5FF5\u306E\u584A,Copyright (C) 2009 chiphead"
+    SPLineBreak: 1
+  - Position: Thanks (Tool)
+    Names: "\u3010Unity Excel Importer\u3011,Copyright (C) 2018 Mikito Yoshiya"
+    SPLineBreak: 1
+  - Position: Thanks (Material)
+    Names: "\u52B9\u679C\u97F3\u30E9\u30DC,\u3086\u30FC\u304E\u308A"
+    SPLineBreak: 1
+  - Position: Project Manager
+    Names: Mai Nakamura
+    SPLineBreak: 1
+  - Position: Director
+    Names: Runa Takahashi
+    SPLineBreak: 0

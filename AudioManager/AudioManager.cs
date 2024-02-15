@@ -346,8 +346,7 @@ public class AudioManager : MonoBehaviour
     /// BGM用のAudioSourceの初期化(生成)
     /// </summary>
     /// <param name="num">BGMのチャネル数</param>
-    /// <returns></returns>
-    public bool CreateAudioSource(byte num)
+    public void CreateAudioSource(byte num)
     {
         BGM_IsPlaying = new bool[num];
         _source_BGM = new AudioSource[num];

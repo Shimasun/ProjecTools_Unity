@@ -16,16 +16,17 @@ public class SaveDataManager : MonoBehaviour
     ///ユーザーデータのセーブとロードを行う
     ///</summary>
 
+    public static SaveDataManager instance;
+
     [SerializeField] private string _fileName = "Data";//セーブデータの名前・まあ変更することはないだろう
     public uint PlayTimeLimit { get; } = 3599999999;//プレイ時間・バトル時間は35億9999万9999秒=99万9999時間59分59秒までカウント
     public uint CountLimit { get; } = 999999999;//起動回数は9億9999万9999回までカウント
+    public float stickDead { get; private set; } = 0.8f;
 
     private string _filePath;//セーブデータ保存先のパス
     public SaveData saveData { get; set; }//セーブデータ内の各データを格納・ここから各データを取得する
 
     public bool Loaded { get; private set; }//セーブデータをロードし終えたか
-
-    public static SaveDataManager instance;
 
     private byte[] _list_FPS = { 30, 60, 90, 120 };
 
@@ -42,12 +43,12 @@ public class SaveDataManager : MonoBehaviour
 
 #if UNITY_EDITOR
     [SerializeField,Header("for Dev")]private bool Dev_Initialize;//起動時に初期化するか
-#endif    
+#endif
 
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
-    
+
     /// <summary>
     /// ユーザデータの「セーブ処理」を行う
     /// </summary>
@@ -122,7 +123,7 @@ public class SaveDataManager : MonoBehaviour
         Loaded = true;
         return saveData;//最後にロードしたデータを返す
     }
-    
+
     /// <summary>
     /// 各変数の値から不正検知用のCheckDigitを算出する
     /// </summary>
@@ -166,7 +167,7 @@ public class SaveDataManager : MonoBehaviour
             CountStartup(saveData);
         }
     }
-    
+
     /// <summary>
     /// セーブデータ保存先のパスを取得する
     /// </summary>
@@ -279,7 +280,7 @@ public class SaveDataManager : MonoBehaviour
     private int CalcDigitForArray(bool[] array)
     {
         int temp = 0;
-        foreach(bool b in array)
+        foreach (bool b in array)
         {
             temp += CalcEachNumForDigit((uint)Convert.ToInt32(b));
         }
@@ -294,7 +295,7 @@ public class SaveDataManager : MonoBehaviour
     private int CalcDigitForArray(int[] array)
     {
         int temp = 0;
-        foreach(int i in array)
+        foreach (int i in array)
         {
             temp += CalcEachNumForDigit((uint)i);
         }
@@ -309,7 +310,7 @@ public class SaveDataManager : MonoBehaviour
     private int CalcDigitForArray(byte[] array)
     {
         int temp = 0;
-        foreach(byte b in array)
+        foreach (byte b in array)
         {
             temp += CalcEachNumForDigit((uint)b);
         }

@@ -4,12 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// 実績確認シーンのmanager
+/// </summary>
 public class AchievementSceneManager : MonoBehaviour
 {
-    /// <summary>
-    /// 実績確認シーンのmanager
-    /// </summary>
-
     public static AchievementSceneManager instance;
     private AchievementManager achieveM;
     private ControlManager control;

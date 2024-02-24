@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
+///<summary>
+///オーディオの管理と再生を行う
+///</summary>
 public class AudioManager : MonoBehaviour
 {
-    ///<summary>
-    ///オーディオの管理と再生を行う
-    ///</summary>
-
     public static AudioManager instance;
     private AudioSource[] _source_BGM;//BGMのAudioSource
     [SerializeField] private AudioSource _source_SE;//SEのAudioSource

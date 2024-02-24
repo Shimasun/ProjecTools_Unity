@@ -5,12 +5,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+/// <summary>
+/// （開発用）ボタン発信で任意のシーンへ移動させる
+/// </summary>
 public class Dev_SceneList : MonoBehaviour
 {
-    /// <summary>
-    /// （開発用）ボタン発信で任意のシーンへ移動させる
-    /// </summary>
-
     [SerializeField] private GameObject goButtonObj;
     [SerializeField] private RectTransform contentParentRect;
     [SerializeField] private StringList listObj;//SceneListのScriptableObj

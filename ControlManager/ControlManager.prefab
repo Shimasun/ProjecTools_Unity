@@ -44,4 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928eaab18cc524697bf7de2e7884671d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSideOfDone: 0
+  _doneButton: 2
+  _cancelButton: 1
+  _doCancelByQKey: 1
+  _inputBorderTime: 0.15

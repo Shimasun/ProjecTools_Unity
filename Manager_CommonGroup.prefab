@@ -57,6 +57,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 1
@@ -528,10 +529,6 @@ PrefabInstance:
       propertyPath: uiCanvasRect
       value: 
       objectReference: {fileID: 3575734131150779151}
-    - target: {fileID: 6696892053140935021, guid: 8acc17354d9948d45bcde918f0156626, type: 3}
-      propertyPath: Dev_Initialize
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8acc17354d9948d45bcde918f0156626, type: 3}
 --- !u!4 &2262391753261598525 stripped

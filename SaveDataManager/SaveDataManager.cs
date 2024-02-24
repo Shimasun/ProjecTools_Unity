@@ -10,12 +10,11 @@ using System;
 //https://qiita.com/InfiniteGame/items/01da9d83853fecb95132
 //https://kan-kikuchi.hatenablog.com/entry/JsonUtility
 
+///<summary>
+/// ユーザーデータのセーブとロードを行う
+///</summary>
 public class SaveDataManager : MonoBehaviour
 {
-    ///<summary>
-    ///ユーザーデータのセーブとロードを行う
-    ///</summary>
-
     public static SaveDataManager instance;
 
     [SerializeField] private string _fileName = "Data";//セーブデータの名前・まあ変更することはないだろう
@@ -155,7 +154,8 @@ public class SaveDataManager : MonoBehaviour
             GetPath();
 
 #if UNITY_EDITOR
-            if(Dev_Initialize){
+            if(Dev_Initialize)
+            {
                 Save(InitializeData());
             }
 #endif

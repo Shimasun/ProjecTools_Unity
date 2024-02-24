@@ -2,7 +2,6 @@
 using UnityEngine;
 using TMPro;
 using System;
-using static UnityEngine.Rendering.DebugUI;
 
 public class Dev_Setings : MonoBehaviour
 {

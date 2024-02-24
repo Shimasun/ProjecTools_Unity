@@ -8,12 +8,11 @@ using UnityEngine.UI;
 using System;
 using System.IO;
 
-public class forDebug : MonoBehaviour
-{
     ///<summary>
     ///FPSとか各種情報を表示する。
     ///</summary>
-
+public class forDebug : MonoBehaviour
+{
     int frameCount;
     float prevTime;
 

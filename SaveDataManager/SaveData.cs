@@ -4,15 +4,14 @@ using System;
 //https://kurokumasoft.com/2022/01/03/unity-savesystem-using-json/
 //https://kazupon.org/unity-jsonutility/#JSON-2
 
+///<summary>
+///ユーザーデータの型となるクラス
+///</summary>
 [Serializable]
 public class SaveData
 {
-    ///<summary>
-    ///ユーザーデータの型となるクラス
-    ///</summary>
-
     //初期状態を代入しておく
-    
+
     //弄らない項目
     public uint StartupNum = 0;//起動回数
     public uint PlayTime = 0;//second・総起動時間 0秒

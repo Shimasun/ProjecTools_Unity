@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// 実績解放時に表示させるUIについて色々
+/// </summary>
 public class GetAchievementUI : MonoBehaviour
 {
-    /// <summary>
-    /// 実績解放時に表示させるUIについて色々
-    /// </summary>
-    
-    [SerializeField]private Image iconImg;//実績絵Image
-    [SerializeField]private TextMeshProUGUI titleText;//実績名TMP
+    [SerializeField] private Image iconImg;//実績絵Image
+    [SerializeField] private TextMeshProUGUI titleText;//実績名TMP
     //private CanvasGroup canvasGroup;
     private Animator animator;
     private float dispTime;//表示時間・カウント用
@@ -20,9 +19,9 @@ public class GetAchievementUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(startCount)
+        if (startCount)
         {
-            if(dispTime <= 0f)
+            if (dispTime <= 0f)
             {
                 //指定時間経過したらUI閉じ開始
                 StartCoroutine(CloseAchieveUI());

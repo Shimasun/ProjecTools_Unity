@@ -5,13 +5,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+///<summary>
+///シーンの読込をします。読込進捗の表示も。
+///LoadingImageを変えてね。
+///</summary>
 public class SceneChanger : MonoBehaviour
 {
-    ///<summary>
-    ///シーンの読込をします。読込進捗の表示も。
-    ///LoadingImageを変えてね。
-    ///</summary>
-
     public static SceneChanger instance;
     private Image image;
     private AudioManager _audio;//AudioManager取得

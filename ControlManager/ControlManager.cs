@@ -264,7 +264,8 @@ public class ControlManager : MonoBehaviour
             temp[(int)Operate.OnFrame] = Input.GetKeyDown(KeyCode.Q);
             temp[(int)Operate.Continue] = Input.GetKey(KeyCode.Q);
         }
-        cancel[(int)Operate.OnFrame] = start = (_key.escapeKey.wasPressedThisFrame || temp[(int)Operate.OnFrame]);
+        start = (_key.escapeKey.wasPressedThisFrame || temp[(int)Operate.OnFrame]);
+        cancel[(int)Operate.OnFrame] = (_mouse.rightButton.wasPressedThisFrame || start);
         cancel[(int)Operate.Continue] = (_key.escapeKey.isPressed || temp[(int)Operate.Continue]);
     }
 

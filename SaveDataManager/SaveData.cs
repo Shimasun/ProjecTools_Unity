@@ -29,11 +29,5 @@ public class SaveData
     public byte FPS = 1;//FPS指定・ゲーム内でFPS弄らない場合は不要・0,1,2,3 = 30,60,90,120
     public byte Resolution = 1;//解像度指定・0,1,2 = 1280*720,1920*1080,3840*2160
 
-    //実績
-    public bool[] Achievements = new bool[20];//実績解放フラグ
-#if false
-    //スキル
-    public byte[] Skills_Opened = new byte[10];//スキル解放状況・何Lvまで解放したか？
-    public byte[] Skills_Equip = new byte[10];//スキル装備状況・何Lvを装備しているか？
-#endif
+    // 以下でセーブする変数を宣言
 }

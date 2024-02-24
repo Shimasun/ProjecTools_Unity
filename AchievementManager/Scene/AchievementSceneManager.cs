@@ -59,7 +59,7 @@ public class AchievementSceneManager : MonoBehaviour
     {
         if (getOperate)
         {
-            if (control.cancel[(int)ControlManager.Operate.OnFrame])
+            if (control.get_cancel(ControlManager.Operate.OnFrame))
             {
                 getOperate = false;
                 SC.SceneChange((sbyte)nextSceneID);

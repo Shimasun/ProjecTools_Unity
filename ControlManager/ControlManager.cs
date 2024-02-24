@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 ///<summary>
 /// 操作の受付を行う・1フレームだけの受付をしたい
@@ -19,18 +20,17 @@ public class ControlManager : MonoBehaviour
 
     // スティック系
     public float dead { get; private set; } = 0.8f; // スティック操作の閾値
-    public bool[] arrow { get; private set; } = new bool[4]; // 上下左右・0,1,2,3 = Up,Right,Down,Left
-    public Vector2 stickVecL { get; private set; } // 左スティック・十字キー・WASD・キーボード十字キーのベクトル
-    public Vector2 stickVecR { get; private set; } // 右スティックのベクトル
+    private bool[] arrow = new bool[4]; // 上下左右・0,1,2,3 = Up,Right,Down,Left
+    private Vector2 stickVecL; // 左スティック・十字キー・WASD・キーボード十字キーのベクトル
+    private Vector2 stickVecR; // 右スティックのベクトル
 
     // ボタン系
-    public bool[] done { get; private set; } = new bool[2]; // 決定ボタン・エンターキー
-    public bool[] cancel { get; private set; } = new bool[2]; // キャンセルボタン・エスケープキー
+    private bool[] done = new bool[2]; // 決定ボタン・エンターキー
+    private bool[] cancel = new bool[2]; // キャンセルボタン・エスケープキー
     public bool start { get; private set; } // Switchプロコン「+」・デュアルショック4「Options」
-    public bool[,] padButtons { get; private set; } = new bool[4, 2]; // ABXYボタン
-    public bool[] stickButtonL { get; private set; } = new bool[2];
-    public bool[] stickButtonR { get; private set; } = new bool[2];
-    public bool[] mouseRightButton { get; private set; } = new bool[2];
+    private bool[,] padButtons = new bool[4, 2]; // ABXYボタン
+    private bool[] stickButtonL = new bool[2];
+    private bool[] stickButtonR = new bool[2];
     public bool keySpace { get; private set; } // キーボードスペースキー
 
     // マウス独自系
@@ -38,8 +38,9 @@ public class ControlManager : MonoBehaviour
     public Vector2 mouseMoveDelta { get; private set; }
 
     // トリガー系・[Trigger, Operate]
-    public bool[,] lT { get; private set; } = new bool[2, 2]; // 左トリガー
-    public bool[,] rT { get; private set; } = new bool[2, 2]; // 右トリガー
+    private bool[,] lT = new bool[2, 2]; // 左トリガー
+    private bool[,] rT = new bool[2, 2]; // 右トリガー
+    private float[] triggerValue = new float[2]; // 左右トリガー入力量L/R
 
     // 入力状況系
     private Gamepad _pad; // 接続されているゲームパッドの入力状態を格納する
@@ -71,6 +72,119 @@ public class ControlManager : MonoBehaviour
         OnFrame = 0, // 1フレームだけ
         Continue = 1 // 長押し
     }
+
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+
+    /// <summary>
+    /// 決定ボタンの入力状況の取得
+    /// </summary>
+    /// <param name="operateKind">フレーム取得か長押しか</param>
+    /// <returns>決定ボタンの入力状況</returns>
+    public bool get_done(Operate operateKind)
+    {
+        return done[(int)operateKind];
+    }
+
+    /// <summary>
+    /// キャンセルボタンの入力状況の取得
+    /// </summary>
+    /// <param name="operateKind">フレーム取得か長押しか</param>
+    /// <returns>キャンセルボタンの入力状況</returns>
+    public bool get_cancel(Operate operateKind)
+    {
+        return cancel[(int)operateKind];
+    }
+
+    /// <summary>
+    /// スティック入力状況の取得
+    /// </summary>
+    /// <param name="LOrR">Lスティックならtrue・Rならfalse</param>
+    /// <returns>指定したスティックの入力状況</returns>
+    public Vector2 get_stickVector(bool LOrR)
+    {
+        if (LOrR)
+        {
+            return stickVecL;
+        }
+        else
+        {
+            return stickVecR;
+        }
+    }
+
+    /// <summary>
+    /// 十字キーとスティック入力による、指定した方向への入力状況を取得
+    /// </summary>
+    /// <param name="dirction">取得する方向</param>
+    /// <returns>指定した方向への入力状況</returns>
+    public bool get_arrow(Arrow dirction)
+    {
+        return arrow[(int)dirction];
+    }
+
+    /// <summary>
+    /// ABXYボタンの入力状況の取得
+    /// </summary>
+    /// <param name="dirction">取得する方向</param>
+    /// <param name="operateKind">フレーム取得か長押しか</param>
+    /// <returns>ABXYボタンの入力状況</returns>
+    public bool get_padButton(Arrow dirction, Operate operateKind)
+    {
+        return padButtons[(int)dirction, (int)operateKind];
+    }
+
+    /// <summary>
+    /// スティックの押し状況(L/R3)を取得
+    /// </summary>
+    /// <param name="LOrR">Lスティックならtrue・Rならfalse</param>
+    /// <param name="operateKind">フレーム取得か長押しか</param>
+    /// <returns>指定したスティックの押し状況(L/R3)</returns>
+    public bool get_stickButton(bool LOrR, Operate operateKind)
+    {
+        if (LOrR)
+        {
+            return stickButtonL[(int)operateKind];
+        }
+        else
+        {
+            return stickButtonR[(int)operateKind];
+        }
+    }
+
+    /// <summary>
+    /// トリガーの入力状況を取得
+    /// </summary>
+    /// <param name="LOrR">Lトリガーならtrue・Rならfalse</param>
+    /// <param name="triggerKind">トリガーの種類</param>
+    /// <param name="operateKind">フレーム取得か長押しか</param>
+    /// <returns>指定したトリガーの入力状況</returns>
+    public bool get_trigger(bool LOrR, Trigger triggerKind, Operate operateKind)
+    {
+        if (LOrR)
+        {
+            return lT[(int)triggerKind, (int)operateKind];
+        }
+        else
+        {
+            return rT[(int)triggerKind, (int)operateKind];
+        }
+    }
+
+    /// <summary>
+    /// トリガー(L/R2)の入力状況をアナログ値で取得
+    /// </summary>
+    /// <param name="LOrR">Lトリガーならtrue・Rならfalse</param>
+    /// <returns>指定したトリガー(L/R2)の入力状況</returns>
+    public float get_triggerValue(bool LOrR)
+    {
+        return triggerValue[Convert.ToInt32(!LOrR)];
+    }
+
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
 
     void Awake()
     {
@@ -162,6 +276,8 @@ public class ControlManager : MonoBehaviour
     {
         // 毎フレーム取得
         int temp = (int)Operate.Continue;
+        triggerValue[0] = _pad.leftTrigger.ReadValue();
+        triggerValue[1] = _pad.rightTrigger.ReadValue();
         if (_pad.leftShoulder.ReadValue() >= dead)
         {
             lT[(int)Trigger.Button, temp] = true;
@@ -170,7 +286,7 @@ public class ControlManager : MonoBehaviour
         {
             lT[(int)Trigger.Button, temp] = false;
         }
-        if (_pad.leftTrigger.ReadValue() >= dead)
+        if (triggerValue[0] >= dead)
         {
             lT[(int)Trigger.Trigger, temp] = true;
         }
@@ -187,7 +303,7 @@ public class ControlManager : MonoBehaviour
         {
             rT[(int)Trigger.Button, temp] = false;
         }
-        if (_pad.rightTrigger.ReadValue() >= dead)
+        if (triggerValue[1] >= dead)
         {
             rT[(int)Trigger.Trigger, temp] = true;
         }
@@ -266,7 +382,7 @@ public class ControlManager : MonoBehaviour
         }
         start = (_key.escapeKey.wasPressedThisFrame || temp[(int)Operate.OnFrame]);
         cancel[(int)Operate.OnFrame] = (_mouse.rightButton.wasPressedThisFrame || start);
-        cancel[(int)Operate.Continue] = (_key.escapeKey.isPressed || temp[(int)Operate.Continue]);
+        cancel[(int)Operate.Continue] = (_key.escapeKey.isPressed || _mouse.rightButton.isPressed || temp[(int)Operate.Continue]);
     }
 
     /// <summary>
@@ -344,10 +460,6 @@ public class ControlManager : MonoBehaviour
     {
         keySpace = _key.spaceKey.wasPressedThisFrame;
         mouseWheelVec = _mouse.scroll.ReadValue(); // マウスホイールの回転量・基本はyだけ・下方向が正
-
-        // 右クリックの状況
-        mouseRightButton[(int)Operate.OnFrame] = _mouse.rightButton.wasPressedThisFrame;
-        mouseRightButton[(int)Operate.Continue] = _mouse.rightButton.isPressed;
 
         mouseMoveDelta = _mouse.delta.ReadValue(); // マウスの移動量
     }

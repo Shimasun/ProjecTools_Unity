@@ -364,7 +364,7 @@ public class ControlManager : MonoBehaviour
     /// </summary>
     private void CheckDoneKeyboard()
     {
-        done[(int)Operate.OnFrame] = (_key.enterKey.wasPressedThisFrame || _mouse.leftButton.wasPressedThisFrame);
+        done[(int)Operate.OnFrame] = (_key.enterKey.wasPressedThisFrame || _mouse.leftButton.wasReleasedThisFrame);
         done[(int)Operate.Continue] = (_key.enterKey.isPressed || _mouse.leftButton.isPressed);
     }
 

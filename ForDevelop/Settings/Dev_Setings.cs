@@ -20,8 +20,9 @@ public class Dev_Setings : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        saveM = SaveDataManager.instance;
-        audioM = AudioManager.instance;
+        Manager_CommonGroup commonM = Manager_CommonGroup.instance;
+        saveM = commonM.saveM;
+        audioM = commonM.audioM;
         screenRes = GetResMode();
         everyVBlank = Convert.ToBoolean(QualitySettings.vSyncCount);
         WriteVolumeText();

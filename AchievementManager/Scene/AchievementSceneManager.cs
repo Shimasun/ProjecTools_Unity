@@ -39,11 +39,12 @@ public class AchievementSceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        control = ControlManager.instance;
-        save = SaveDataManager.instance;
-        SC = SceneChanger.instance;
-        audioM = AudioManager.instance;
-        achieveM = AchievementManager.instance;
+        Manager_CommonGroup commonM = Manager_CommonGroup.instance;
+        control = commonM.controlM;
+        save = commonM.saveM;
+        SC = commonM.sceneChanger;
+        audioM = commonM.audioM;
+        achieveM = commonM.achieveM;
 
         //リスト初期化
         InitializeItems();

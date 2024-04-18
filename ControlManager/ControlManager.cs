@@ -9,8 +9,6 @@ using System;
 ///</summary>
 public class ControlManager : MonoBehaviour
 {
-    public static ControlManager instance;
-
     public Device controlDevice { get; private set; } // 入力を受け付けているデバイスの種類
     [SerializeField] private Arrow _doneButton = Arrow.Down; // 決定ボタンの位置
     [SerializeField] private Arrow _cancelButton = Arrow.Right; // キャンセルボタンの位置
@@ -185,14 +183,6 @@ public class ControlManager : MonoBehaviour
     /////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////
-
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-    }
 
     void Update()
     {

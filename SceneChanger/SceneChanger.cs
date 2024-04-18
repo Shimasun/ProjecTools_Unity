@@ -11,7 +11,6 @@ using TMPro;
 ///</summary>
 public class SceneChanger : MonoBehaviour
 {
-    public static SceneChanger instance;
     private Image image;
     private AudioManager _audio;//AudioManager取得
     [SerializeField] private float FadeTime = 0.3f;  //フェードにかける時間(秒)
@@ -59,14 +58,6 @@ public class SceneChanger : MonoBehaviour
     /////////////////////////////////////////
     /////////////////////////////////////////
     //以下いじるな
-
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-    }
 
 
     IEnumerator fadeout()
@@ -164,7 +155,7 @@ public class SceneChanger : MonoBehaviour
         image.color = new Color(0, 0, 0, 1.0f);
         StartCoroutine("fadeout");
         Parent_Canvas = transform.parent.gameObject.GetComponent<Transform>();
-        _audio = AudioManager.instance;
+        _audio = Manager_CommonGroup.instance.audioM;
     }
 
     /// <summary>

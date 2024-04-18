@@ -16,7 +16,6 @@ using System;
 public class SaveDataManager : MonoBehaviour
 {
     public static SaveDataManager instance;
-
     [SerializeField] private string _fileName = "Data";//セーブデータの名前・まあ変更することはないだろう
     public uint PlayTimeLimit { get; } = 3599999999;//プレイ時間・バトル時間は35億9999万9999秒=99万9999時間59分59秒までカウント
     public uint CountLimit { get; } = 999999999;//起動回数は9億9999万9999回までカウント

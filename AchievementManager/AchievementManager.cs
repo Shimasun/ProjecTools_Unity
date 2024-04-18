@@ -3,13 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 実績解放をしたりする
+/// </summary>
 public class AchievementManager : MonoBehaviour
 {
-    /// <summary>
-    /// 実績解放をしたり
-    /// </summary>
-
-    public static AchievementManager instance;
     private SaveDataManager save;
     private AudioManager audioM;
 
@@ -22,19 +20,12 @@ public class AchievementManager : MonoBehaviour
     [SerializeField] private SpriteList _iconList;
     public SpriteList iconList => _iconList;
 
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
-        save = SaveDataManager.instance;
-        audioM = AudioManager.instance;
+        Manager_CommonGroup commonM = Manager_CommonGroup.instance;
+        save = commonM.saveM;
+        audioM = commonM.audioM;
     }
 
     /// <summary>

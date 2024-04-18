@@ -48,8 +48,9 @@ public class forDebug : MonoBehaviour
 
     void Start()
     {
-        _saveDataManager = SaveDataManager.instance;//設定内容一覧をセーブデータから取得
-        _audio = AudioManager.instance;
+        Manager_CommonGroup commonM = Manager_CommonGroup.instance;
+        _saveDataManager = commonM.saveM;//設定内容一覧をセーブデータから取得
+        _audio = commonM.audioM;
 
         Debug.developerConsoleVisible = false;//ビルド版のDevelopmentConsoleを表示させない
 

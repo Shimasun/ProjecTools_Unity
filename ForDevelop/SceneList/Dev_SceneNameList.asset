@@ -13,9 +13,5 @@ MonoBehaviour:
   m_Name: Dev_SceneNameList
   m_EditorClassIdentifier: 
   list:
-  - 0_Title
-  - 1_MainMenu
+  - SampleScene
   - Sys_Credit
-  - Stage
-  - Result
-  - Sys_Achievement

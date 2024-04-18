@@ -8,7 +8,6 @@ using UnityEngine.Audio;
 ///</summary>
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance;
     private AudioSource[] _source_BGM;//BGMのAudioSource
     [SerializeField] private AudioSource _source_SE;//SEのAudioSource
     [SerializeField] private SoundList _list_SE;//UI用SEのデータベース（配列）
@@ -24,20 +23,9 @@ public class AudioManager : MonoBehaviour
 
     private float time = 0;//フェードアウト用
 
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-
-            // BGM用のAudioSourceの初期化
-            CreateAudioSource(_bgmSourceNum);
-        }
-    }
-
     void Start()
     {
-        _saveDataManager = SaveDataManager.instance;//設定内容一覧をセーブデータから取得
+        _saveDataManager = Manager_CommonGroup.instance.saveM;//設定内容一覧をセーブデータから取得
         while (true)
         {
             if (_saveDataManager.Loaded)
